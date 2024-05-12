@@ -1,0 +1,9 @@
+describe("Functional UI Testing with Cypress", () => {
+    it("Tests the ability to click through to a contact page", () => {
+      cy.visit('https://thinking-tester-contact-list.herokuapp.com/');
+      cy.get('#email').type('brad@brightskyefarm.com');
+      cy.get('#password').type('Lindy11');
+      cy.get('#submit').click();
+      cy.get('#add-contact').click();
+      cy.get('h1').should('have.text','Add Contact');
+})});
