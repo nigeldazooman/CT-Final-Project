@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "e2e:chrome": "cypress run --browser chrome"
+    "start": "cypress run --browser edge"
   },
   "dependencies": {
     "cypress": "^13.9.0",
