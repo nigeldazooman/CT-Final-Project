@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "start": "cypress run --browser edge"
+    "api-test": "cypress run --spec cypress/e2e/api-*.cy.js --browser edge",
+    "ui-test": "cypress run --spec cypress/e2e/ui-*.cy.js --browser edge",
+    "security": "cypress run --spec cypress/e2e/security-*.cy.js --browser edge"
   },
   "dependencies": {
     "cypress": "^13.9.0",
