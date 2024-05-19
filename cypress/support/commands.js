@@ -28,7 +28,12 @@ Cypress.Commands.add("login",(username,password)=>{
     cy.request({
         method: 'POST',
         url: 'https://thinking-tester-contact-list.herokuapp.com/users/login',
-    }).should((response) => {
-        expect(response.status).to.eq(200);
-      });
+        body:{
+            "email": username,
+            "password": password
+        }
+    }).then(({ body }) => {
+        Cypress.env('token', body.token);
+      }).its('status')
+      .should('eq', 200);
 })

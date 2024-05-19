@@ -1,10 +1,13 @@
 describe("Data-Driven API Testing with Cypress", () => {
+  beforeEach(() => {
+    cy.login("brad@brightskyefarm.com", "Lindy11");
+  });
     it("Tests the POST Login User API", () => {
       cy.request({
         method: 'POST',
         url: 'https://thinking-tester-contact-list.herokuapp.com/users/login',
         headers: {
-          'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxMDU5NjVkNzJmNzAwMTM5ZjliZTEiLCJpYXQiOjE3MTU1NDI2MzB9.h092bef6a4Z7YAEWUA8WuN4SJdDqFKq1x8bKwDysdwc", 
+          'Authorization': "Bearer " +Cypress.env('token'), 
         },
         body: {
             email: "elymar2@fake.com",

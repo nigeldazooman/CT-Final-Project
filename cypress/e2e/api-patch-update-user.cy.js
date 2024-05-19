@@ -1,10 +1,13 @@
 describe("Data-Driven API Testing with Cypress", () => {
+  beforeEach(() => {
+    cy.login("elymar@fake.com", "Bonito1");
+  });
     it("Tests the PATCH Update User API", () => {
       cy.request({
         method: 'PATCH',
         url: 'https://thinking-tester-contact-list.herokuapp.com/users/me',
         headers: {
-          'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQxMDU5NjVkNzJmNzAwMTM5ZjliZTEiLCJpYXQiOjE3MTU1NDIyMTV9.ShT71fcNgDogiCp3QWTxQX8kmP_IJFavZAFbNEPXUrw", 
+          'Authorization': "Bearer " +Cypress.env('token'), 
         },
         body: {
             firstName: "Ely",
