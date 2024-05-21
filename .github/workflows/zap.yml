@@ -7,17 +7,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: main # Ensure this matches your branch name
           token: ${{ secrets.GITHUB_TOKEN }}
-      # Debugging step to check the git status
-      - name: Check git status
-        run: git status
-      # Ensure we have the latest commit and branch information
-      - name: Fetch all branches
-        run: git fetch --all
-      # Check if the correct branch is checked out
-      - name: Verify branch
-        run: git branch -v
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
