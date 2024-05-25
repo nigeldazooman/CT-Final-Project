@@ -1,4 +1,8 @@
 on: [push]
+permissions:
+  contents: read  # Required to read the repository contents
+  pull-requests: write  # Required if you need to comment on pull requests
+  security-events: write  # Required for security tools like OWASP ZAP
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
