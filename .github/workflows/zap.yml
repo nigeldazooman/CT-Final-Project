@@ -1,18 +1,27 @@
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
 permissions:
-  contents: read  # Required to read the repository contents
-  pull-requests: write  # Required if you need to comment on pull requests
-  security-events: write  # Required for security tools like OWASP ZAP
+  contents: read
+  pull-requests: write
+  security-events: write
+
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
-    name: Scan the webapplication
+    name: Scan the web application
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: main # Ensure this matches your branch name
+          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
