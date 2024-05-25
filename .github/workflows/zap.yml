@@ -35,3 +35,8 @@ jobs:
           target: 'https://www.zaproxy.org'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -t 60 -d'
+        continue-on-error: true
+      
+      - name: Print Docker Logs on Failure
+        if: failure()
+        run: sudo journalctl -u docker.service
